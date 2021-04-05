@@ -10,7 +10,7 @@
 
 
 HTML
--container for three pokemon
+-three containers for three pokemon
 -radio buttons to select one pokemon
 -button to capture pokemon and populate 3 new pokemon
 
@@ -18,7 +18,7 @@ JS
 -initial states:
     -pokedex: []
     -rounds played: 0
-    -list of pokemon encounteed: []
+    -list of pokemon encountered: []
     -times this pokemon was encountered: 0
     -times this pokemon was captured: 0
 
