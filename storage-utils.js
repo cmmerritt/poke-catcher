@@ -15,7 +15,7 @@ export function getPokedex() {
 
 export function setPokedex(pokedexAsParsed) {
     const pokedexAsString = JSON.stringify(pokedexAsParsed);
-    localStorage.setitem(POKEDEX, pokedexAsString);
+    localStorage.setItem(POKEDEX, pokedexAsString);
 }
 
 
