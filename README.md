@@ -34,4 +34,6 @@ JS
         -increment times this pokemon was captured
     -after 10 rounds:
         -display results page
-        -allow user to clear local storage and start again
+            -single-session results
+                -pokedex info
+        -allow user to clear local storage and start again (button & add event listener)

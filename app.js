@@ -1,6 +1,7 @@
 // import functions and grab DOM elements
 
-import { pokeData } from './data.js';
+// import { pokeData } from './data.js';
+
 import { capturePokemon, encounterPokemon } from './storage-utils.js';
 import { generateThreePokemon } from '../data-utils.js';
 import { findByName } from './utils.js';
@@ -8,7 +9,7 @@ import { findByName } from './utils.js';
 // initialize state
 
 let roundsPlayed = 0;
-let pokedex = [];
+// let pokedex = [];
 
 
 // set event listeners to update state and DOM
@@ -61,7 +62,6 @@ captureButton.addEventListener('click', () => {
     const selectedButton = document.querySelector('input:checked');
     const selectedPokemon = findByName(selectedButton.value);
     roundsPlayed = roundsPlayed + 1;
-    console.log(roundsPlayed);
     if (roundsPlayed <= 9) {
         capturePokemon(selectedPokemon);
         createPokeDOM();

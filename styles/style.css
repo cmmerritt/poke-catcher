@@ -93,6 +93,12 @@ footer {
     box-shadow: var(--shadow);
 }
   
+table {
+    width: 100%;
+    border: solid 1px black;
+}
+
+
   @keyframes pulse {
     20% {
       transform: rotate3d(-10, -10, -10, 50deg) scale(1.2);
