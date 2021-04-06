@@ -14,11 +14,11 @@ test('generateThreePokemon should return three unique species', (expect) => {
 
     const expected = true;
 
-    const dataForExpected = generateThreePokemon();
+    const dataForActual = generateThreePokemon();
 
-    const pokeId1 = dataForExpected[0]['id'];
-    const pokeId2 = dataForExpected[1]['id'];
-    const pokeId3 = dataForExpected[2]['id'];
+    const pokeId1 = dataForActual[0]['id'];
+    const pokeId2 = dataForActual[1]['id'];
+    const pokeId3 = dataForActual[2]['id'];
     
     const actual = ((pokeId1 !== pokeId2) && (pokeId1 !== pokeId3) && (pokeId1 !== pokeId3));
 
