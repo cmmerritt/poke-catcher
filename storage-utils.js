@@ -42,6 +42,7 @@ export function encounterPokemon(pokemon) {
         pokedex.push(pokedexAddition);
     }
     setPokedex(pokedex);
+    console.log(pokedex);
     return pokedex;
 }
 
@@ -58,3 +59,6 @@ export function capturePokemon(pokemon) {
     setPokedex(pokedex);
     return pokedex;
 }
+
+
+
