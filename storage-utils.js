@@ -31,6 +31,7 @@ export function setPokedex(pokedexAsParsed) {
 export function encounterPokemon(pokemon) {
     const pokedex = getPokedex();
     const matchingPokemon = findById(pokedex, pokemon.pokemon);
+    console.log(matchingPokemon);
     if (matchingPokemon) {
         matchingPokemon.encountered++;
     } else {
@@ -39,10 +40,12 @@ export function encounterPokemon(pokemon) {
             captured: 0,
             encountered: 1,
         };
+        console.log('added item', pokedexAddition);
         pokedex.push(pokedexAddition);
     }
+    
     setPokedex(pokedex);
-    console.log(pokedex);
+    console.log('new array', pokedex);
     return pokedex;
 }
 
@@ -55,7 +58,7 @@ export function capturePokemon(pokemon) {
 
     const pokedex = getPokedex();
     const matchingPokemon = findById(pokedex, pokemon.pokemon);
-    matchingPokemon.captured = matchingPokemon.captured + 1;
+    matchingPokemon.captured++;
     setPokedex(pokedex);
     return pokedex;
 }

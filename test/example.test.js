@@ -20,7 +20,7 @@ test('generateThreePokemon should return three unique species', (expect) => {
     const pokeId2 = dataForActual[1]['id'];
     const pokeId3 = dataForActual[2]['id'];
     
-    const actual = ((pokeId1 !== pokeId2) && (pokeId1 !== pokeId3) && (pokeId1 !== pokeId3));
+    const actual = ((pokeId1 !== pokeId2) && (pokeId2 !== pokeId3) && (pokeId1 !== pokeId3));
 
 
     expect.equal(actual, expected);
