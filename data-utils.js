@@ -11,8 +11,6 @@ function selectRandomPokemon() {
     return Math.floor(Math.random() * pokeData.length);
 }
 
-console.log(selectRandomPokemon());
-
 export function generateThreePokemon() {
     let randomNumOne = selectRandomPokemon();
     let randomNumTwo = selectRandomPokemon();
@@ -40,6 +38,3 @@ export function generateThreePokemon() {
 
     return [generatedPokeOne, generatedPokeTwo, generatedPokeThree];
 }
-console.log(generateThreePokemon());
-console.log(generateThreePokemon());
-console.log(generateThreePokemon());

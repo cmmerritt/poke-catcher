@@ -1,8 +1,9 @@
 // import functions and grab DOM elements
 
 import { pokeData } from './data.js';
-import { encounterPokemon } from './storage-utils.js';
+import { capturePokemon, encounterPokemon } from './storage-utils.js';
 import { generateThreePokemon } from '../data-utils.js';
+import { findByName } from './utils.js';
 
 // initialize state
 
@@ -44,8 +45,28 @@ function createPokeDOM() {
     radioButton1.value = pokemonOnPage[0].pokemon;
     radioButton2.value = pokemonOnPage[1].pokemon;
     radioButton3.value = pokemonOnPage[2].pokemon;
+
+    encounterPokemon(pokemonOnPage[0]);
+    encounterPokemon(pokemonOnPage[1]);
+    encounterPokemon(pokemonOnPage[2]);
 }
 
 //let's add our three pokemon when we load the page
 
 createPokeDOM();
+
+const captureButton = document.getElementById('capture-button');
+
+captureButton.addEventListener('click', () => {
+    const selectedButton = document.querySelector('input:checked');
+    const selectedPokemon = findByName(selectedButton.value);
+    roundsPlayed = roundsPlayed + 1;
+    console.log(roundsPlayed);
+    if (roundsPlayed <= 9) {
+        capturePokemon(selectedPokemon);
+        createPokeDOM();
+    } else {
+        capturePokemon(selectedPokemon);
+        window.location = './results.html';
+    }
+});
