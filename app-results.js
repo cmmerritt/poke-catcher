@@ -1,7 +1,8 @@
 import { getPermStorage, getPokedex } from './storage-utils.js';
 
 const pokedex = getPokedex();
-const button = document.querySelector('#play-again-button');
+const againButton = document.querySelector('#play-again-button');
+const totalButton = document.querySelector('#all-results-button');
 
 const permStorage = getPermStorage();
 
@@ -42,9 +43,14 @@ for (let pokemon of permStorage) {
     tableBody.append(tr);
 } */
 
-button.addEventListener('click', () => {
+againButton.addEventListener('click', () => {
     localStorage.removeItem(POKEDEX);
     window.location = './index.html';
+});
+
+totalButton.addEventListener('click', () => {
+    localStorage.removeItem(POKEDEX);
+    window.location = './all-time-results.html';
 });
 
 const ctx = document.getElementById('chart-1').getContext('2d');
@@ -65,39 +71,6 @@ const myChart = new Chart(ctx, { // eslint-disable-line
             {
                 label: 'Pokemon captured',
                 data: capturedArray,
-                backgroundColor: 'lightblue',
-                borderColor: 'steelblue',
-                borderWidth: 1
-            }
-        ]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-});
-
-const cty = document.getElementById('chart-2').getContext('2d');
-
-const myChart2 = new Chart(cty, { // eslint-disable-line
-    type: 'bar',
-    data: {
-        labels: permNamesArray,
-        datasets: [
-            {
-                label: 'Pokemon encountered all time',
-                data: permEncounteredArray,
-                backgroundColor: 'pink',
-                borderColor: 'red',
-
-                borderWidth: 1
-            },
-            {
-                label: 'Pokemon captured all time',
-                data: permCapturedArray,
                 backgroundColor: 'lightblue',
                 borderColor: 'steelblue',
                 borderWidth: 1
