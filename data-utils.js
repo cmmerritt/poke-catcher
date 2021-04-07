@@ -5,7 +5,7 @@
 // no two pokemon in the same batch can be the same species
 
 import { pokeData } from './data.js';
-import { encounterPokemon } from './storage-utils.js';
+import { encounterPokemon, updatePermStorage } from './storage-utils.js';
 
 function selectRandomPokemon() {
     return Math.floor(Math.random() * pokeData.length);
@@ -33,6 +33,11 @@ export function generateThreePokemon() {
     encounterPokemon(generatedPokeOne);
     encounterPokemon(generatedPokeTwo);
     encounterPokemon(generatedPokeThree);
+
+    updatePermStorage(generatedPokeOne);
+    updatePermStorage(generatedPokeTwo);
+    updatePermStorage(generatedPokeThree);
+
 
     // let's return something
 

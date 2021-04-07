@@ -1,12 +1,15 @@
-import { getPokedex } from './storage-utils.js';
+import { getPermStorage, getPokedex } from './storage-utils.js';
 
-const tableBody = document.querySelector('#results-table-body');
 const pokedex = getPokedex();
 const button = document.querySelector('#play-again-button');
+
+const permStorage = getPermStorage();
 
 const namesArray = [];
 const capturedArray = [];
 const encounteredArray = [];
+
+const POKEDEX = 'POKEDEX';
 
 for (let pokemon of pokedex) {
     namesArray.push(pokemon.id);
@@ -14,7 +17,18 @@ for (let pokemon of pokedex) {
     encounteredArray.push(pokemon.encountered);
 }
 
-for (let poke of pokedex) {
+const permNamesArray = [];
+const permCapturedArray = [];
+const permEncounteredArray = [];
+
+for (let pokemon of permStorage) {
+    permNamesArray.push(pokemon.id);
+    permCapturedArray.push(pokemon.captured);
+    permEncounteredArray.push(pokemon.encountered);
+}
+
+
+/* for (let poke of pokedex) {
     const tr = document.createElement('tr');
     const pokeName = document.createElement('td');
     pokeName.textContent = poke.id;
@@ -26,14 +40,14 @@ for (let poke of pokedex) {
     tr.append(pokeName, pokeTimesEncountered, pokeTimesCaptured);
 
     tableBody.append(tr);
-}
+} */
 
 button.addEventListener('click', () => {
-    localStorage.clear();
+    localStorage.removeItem(POKEDEX);
     window.location = './index.html';
 });
 
-const ctx = document.getElementById('chart').getContext('2d');
+const ctx = document.getElementById('chart-1').getContext('2d');
 
 const myChart = new Chart(ctx, { // eslint-disable-line
     type: 'bar',
@@ -51,6 +65,39 @@ const myChart = new Chart(ctx, { // eslint-disable-line
             {
                 label: 'Pokemon captured',
                 data: capturedArray,
+                backgroundColor: 'lightblue',
+                borderColor: 'steelblue',
+                borderWidth: 1
+            }
+        ]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+const cty = document.getElementById('chart-2').getContext('2d');
+
+const myChart2 = new Chart(cty, { // eslint-disable-line
+    type: 'bar',
+    data: {
+        labels: permNamesArray,
+        datasets: [
+            {
+                label: 'Pokemon encountered all time',
+                data: permEncounteredArray,
+                backgroundColor: 'pink',
+                borderColor: 'red',
+
+                borderWidth: 1
+            },
+            {
+                label: 'Pokemon captured all time',
+                data: permCapturedArray,
                 backgroundColor: 'lightblue',
                 borderColor: 'steelblue',
                 borderWidth: 1
