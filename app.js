@@ -46,10 +46,6 @@ function createPokeDOM() {
     radioButton1.value = pokemonOnPage[0].pokemon;
     radioButton2.value = pokemonOnPage[1].pokemon;
     radioButton3.value = pokemonOnPage[2].pokemon;
-
-    encounterPokemon(pokemonOnPage[0]);
-    encounterPokemon(pokemonOnPage[1]);
-    encounterPokemon(pokemonOnPage[2]);
 }
 
 //let's add our three pokemon when we load the page
