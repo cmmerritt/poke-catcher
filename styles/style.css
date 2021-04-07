@@ -43,6 +43,7 @@ section {
     margin-top: var(--gutter);
     margin-bottom: var(--gutter);
     border: solid 2px var(--color1);
+    background-image: url('../assets/prairie-background.jpeg');
 }
 
 header {
@@ -101,6 +102,27 @@ table {
     width: 100%;
     border: solid 1px black;
 }
+
+[type=radio], #capture-button { 
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    }
+  
+  /* IMAGE STYLES */
+[type=radio] + img {
+    cursor: pointer;
+    }
+
+#capture-button + img {
+    cursor: pointer;
+}
+  
+  /* CHECKED STYLES */
+[type=radio]:checked + img {
+    outline: 2px solid #f00;
+    }
 
 canvas {
     width: 75%;

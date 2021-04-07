@@ -2,15 +2,14 @@
 
 // import { pokeData } from './data.js';
 
-import { capturePokemon, encounterPokemon } from './storage-utils.js';
-import { generateThreePokemon } from '../data-utils.js';
+import { capturePokemon } from './storage-utils.js';
+import { generateThreePokemon } from './data-utils.js';
 import { findByName } from './utils.js';
 
 // initialize state
 
 let roundsPlayed = 0;
 // let pokedex = [];
-
 
 // set event listeners to update state and DOM
 
