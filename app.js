@@ -2,13 +2,15 @@
 
 // import { pokeData } from './data.js';
 
-import { capturePokemon } from './storage-utils.js';
+import { capturePokemon, captureToPermStorage } from './storage-utils.js';
 import { generateThreePokemon } from './data-utils.js';
 import { findByName } from './utils.js';
 
 // initialize state
 
 let roundsPlayed = 0;
+
+
 // let pokedex = [];
 
 // set event listeners to update state and DOM
@@ -59,9 +61,11 @@ captureButton.addEventListener('click', () => {
     roundsPlayed = roundsPlayed + 1;
     if (roundsPlayed <= 9) {
         capturePokemon(selectedPokemon);
+        captureToPermStorage(selectedPokemon);
         createPokeDOM();
     } else {
         capturePokemon(selectedPokemon);
+        captureToPermStorage(selectedPokemon);
         window.location = './results.html';
     }
 });

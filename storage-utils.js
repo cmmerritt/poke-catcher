@@ -3,6 +3,7 @@
 import { findById } from './utils.js';
 
 const POKEDEX = 'POKEDEX';
+const PERMSTORAGE = 'PERMSTORAGE';
 
 export function getPokedex() {
     const pokedexAsString = localStorage.getItem(POKEDEX);
@@ -18,6 +19,21 @@ export function setPokedex(pokedexAsParsed) {
     localStorage.setItem(POKEDEX, pokedexAsString);
 }
 
+// and set and get data from "permanent" storage
+
+export function getPermStorage() {
+    const permAsString = localStorage.getItem(PERMSTORAGE);
+    if (!permAsString) {
+        return [];
+    }
+    const permAsParsed = JSON.parse(permAsString);
+    return permAsParsed;
+}
+
+export function setPermStorage(permAsParsed) {
+    const permAsString = JSON.stringify(permAsParsed);
+    localStorage.setItem(PERMSTORAGE, permAsString);
+}
 
 // encounter and capture pokes 
 
@@ -41,9 +57,26 @@ export function encounterPokemon(pokemon) {
         };
         pokedex.push(pokedexAddition);
     }
-    
     setPokedex(pokedex);
     return pokedex;
+}
+
+export function updatePermStorage(pokemon) {
+    const permStorage = getPermStorage();
+    const matchingPokemon = findById(permStorage, pokemon.pokemon);
+    if (matchingPokemon) {
+        matchingPokemon.encountered++;
+    } else {
+        const permAddition = {
+            id: pokemon.pokemon,
+            captured: 0,
+            encountered: 1,
+        };
+        permStorage.push(permAddition);
+    }
+    setPermStorage(permStorage);
+    console.log(permStorage);
+    return permStorage;
 }
 
 //capture function
@@ -60,5 +93,14 @@ export function capturePokemon(pokemon) {
     return pokedex;
 }
 
+export function captureToPermStorage(pokemon) {
+    // check pokemon against pokedex
+    // increment the matching pokemon's 'captured' property
+    // should always be in pokedex already since we will run 'encountered' when page loads...
 
-
+    const permStorage = getPermStorage();
+    const matchingPokemon = findById(permStorage, pokemon.pokemon);
+    matchingPokemon.captured++;
+    setPermStorage(permStorage);
+    return permStorage;
+}
